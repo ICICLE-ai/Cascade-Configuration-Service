@@ -1,6 +1,6 @@
 # Cascade Configuration Service
 
-A Streamlit-based demo for the **DYSCI Cascade Configuration Service**.
+A Streamlit-based demo for the **Cascade Configuration Service**.
 
 The service takes a maximum cost budget and maximum error budget as input and selects the lowest-latency feasible cascade configuration.
 
