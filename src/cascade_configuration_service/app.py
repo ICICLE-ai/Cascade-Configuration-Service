@@ -2,13 +2,16 @@ from pathlib import Path
 
 import streamlit as st
 
-from dysci.data_loader import load_policy_table
-from dysci.model_utils import format_model_name, split_edge_models
-from dysci.selector import select_best_policy
-from dysci.visualization import show_policy_workflow
+from cascade_configuration_service.dysci.data_loader import load_policy_table
+from cascade_configuration_service.dysci.model_utils import (
+    format_model_name,
+    split_edge_models,
+)
+from cascade_configuration_service.dysci.selector import select_best_policy
+from cascade_configuration_service.dysci.visualization import show_policy_workflow
 
-
-POLICY_FILE = Path("data/policy_table.csv")
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+POLICY_FILE = PROJECT_ROOT / "data" / "policy_table.csv"
 
 st.set_page_config(
     page_title="DYSCI Cascade Configuration",

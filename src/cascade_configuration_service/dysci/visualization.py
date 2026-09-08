@@ -1,7 +1,9 @@
 import streamlit as st
 
-from dysci.model_utils import format_model_name, split_edge_models
-
+from cascade_configuration_service.dysci.model_utils import (
+    format_model_name,
+    split_edge_models,
+)
 
 def show_policy_workflow(
     policy: str,
