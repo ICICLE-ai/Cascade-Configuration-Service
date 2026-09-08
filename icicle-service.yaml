@@ -1,15 +1,27 @@
+
 schema-version: 1
 
-# Identity
-service-name: cascade-configuration-service
-service-version: 0.1.0
-project-name:cascade-configuration-service
-service-type: ai
-pod-name:cascade-configuration-service
 
-# Runtime
+
+service-name: cascade-configuration-service
+
+service-version: 0.1.0
+
+project-name: cascade-configuration-service
+
+service-type: ai
+
+pod-name: cascade-configuration-service
+
+
+
 runtime-type: python
+
 runtime-version: "3.13"
 
+
+
 build-apt-packages: []
+
 runtime-apt-packages: []
+
