@@ -7,6 +7,10 @@ on:
   # Allow manual runs from the GitHub Actions UI.
   workflow_dispatch:
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   deploy:
     uses: icicle-ai/cicd-templates/.github/workflows/deploy-service.yaml@v1
