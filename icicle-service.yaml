@@ -11,7 +11,7 @@ project-name: cascade-configuration-service
 
 service-type: ai
 
-pod-name: cascade-configuration-service
+pod-name: cascadeconfigurationservice
 
 
 
