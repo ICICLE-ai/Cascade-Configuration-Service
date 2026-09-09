@@ -1,0 +1,31 @@
+- id: "CascadeConfigurationService:0.1.0"
+  owner: "Isuru Gamage"
+
+  primaryThrust: "core/Software"
+
+  name: "Cascade Configuration Service"
+
+  status: "AlphaRelease"
+
+  description: >
+    The Cascade Configuration Service provides a Streamlit-based interface
+    for selecting a model cascade configuration based on user-defined cost
+    and error constraints.
+
+  componentVersion: "0.1.0"
+
+  targetIcicleRelease: None
+
+  licenseUrl: "https://github.com/ICICLE-ai/Cascade-Configuration-Service"
+
+  publicAccess: true
+
+  sourceCodeUrl: "https://github.com/ICICLE-ai/Cascade-Configuration-Service"
+
+  codeReviewConducted: false
+
+  testsWritten: false
+
+  developerDocumentationAvailable: true
+
+  trainingTutorialsAvailable: true
