@@ -10,8 +10,7 @@ from cascade_configuration_service.dysci.model_utils import (
 from cascade_configuration_service.dysci.selector import select_best_policy
 from cascade_configuration_service.dysci.visualization import show_policy_workflow
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-POLICY_FILE = PROJECT_ROOT / "data" / "policy_table.csv"
+POLICY_FILE = Path(__file__).resolve().parent / "data" / "policy_table.csv"
 
 st.set_page_config(
     page_title="DYSCI Cascade Configuration",
