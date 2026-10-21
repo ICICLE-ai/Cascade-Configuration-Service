@@ -14,7 +14,7 @@
 
   componentVersion: "0.1.0"
 
-  targetIcicleRelease: None
+  targetIcicleRelease: "2026-10"
 
   licenseUrl: "https://github.com/ICICLE-ai/Cascade-Configuration-Service"
 
