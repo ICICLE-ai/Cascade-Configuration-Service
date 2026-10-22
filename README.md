@@ -137,7 +137,9 @@ Among all feasible configurations, the service selects the configuration with th
 
 # Cascade Configuration Service
 
-The Cascade Configuration Service is a Streamlit-based interface for selecting a model cascade configuration based on user-defined cost and error constraints. The service selects the lowest-latency feasible configuration from a predefined policy table and presents the selected configuration through an interactive interface.
+The Cascade Configuration Service is a Streamlit-based interface for selecting a model cascade configuration based on user-defined cost and error constraints. The service selects the lowest-latency configuration that satisfies these constraints from a predefined policy table.
+
+The current version provides configuration selection and visualization. A future version will integrate the selected configuration with the backend inference system, allowing users to submit inference requests and execute them using a configuration that satisfies their cost and error requirements while providing low-latency inference.
 
 **Tags:** Software
 
@@ -244,7 +246,15 @@ The user provides two constraints:
 - **Maximum Cost Budget (C)**
 - **Maximum Error Budget (E)**
 
-The service evaluates the available configurations and identifies those satisfying the provided constraints.
+### Cost Budget
+
+The cost budget specifies the maximum allowed execution cost for a cascade configuration. Cost is calculated from model service time, with different weights for edge and cloud execution. Edge model cost is weighted as 25% of its service time, while cloud model cost is weighted as 50% of its service time.
+
+The cost does not represent a dollar amount. Network and queueing delays are not included in the cost calculation.
+
+### Error Budget
+
+The error budget specifies the maximum acceptable classification error. For example, an error budget of `0.10` allows configurations with an expected classification error of up to 10%.
 
 A configuration is considered feasible when:
 
@@ -254,6 +264,8 @@ error <= user error budget
 ```
 
 Among the feasible configurations, the service selects the configuration with the lowest estimated latency.
+
+The current service evaluates candidate cascade configurations using a predefined offline policy table containing measured or pre-computed configuration characteristics, including cost, classification error, and estimated latency.
 
 The service returns:
 

@@ -13,18 +13,19 @@ from cascade_configuration_service.dysci.visualization import show_policy_workfl
 POLICY_FILE = Path(__file__).resolve().parent / "data" / "policy_table.csv"
 
 st.set_page_config(
-    page_title="DYSCI Cascade Configuration",
+    page_title="Cascade Configuration Service",
     page_icon="⚙️",
     layout="wide",
 )
 
-st.title("DYSCI: Dynamic Speculative Cascading for Serverless Model Inference")
+st.title("Dynamic Speculative Cascading for Serverless Model Inference")
 st.subheader("Cascade Configuration Service")
 
 st.write(
     "Provide the maximum cost and error constraints. "
-    "DYSCI automatically selects the optimal execution policy, "
-    "edge model, cloud model, and confidence threshold."
+    "The service selects the lowest-latency cascade configuration that satisfies "
+    "these constraints, including the execution policy, edge model, cloud model, "
+    "and confidence threshold."
 )
 
 try:
@@ -35,6 +36,11 @@ except (FileNotFoundError, ValueError) as error:
 
 st.subheader("User Requirements")
 
+st.caption(
+    "Cost represents an execution cost based on model service time, "
+    "while error represents the expected classification error."
+)
+
 input_col1, input_col2 = st.columns(2)
 
 with input_col1:
@@ -44,7 +50,11 @@ with input_col1:
         max_value=200.0,
         value=50.0,
         step=5.0,
-        help="Maximum allowed expected execution cost.",
+        help=(
+            "Maximum allowed execution cost. Cost is calculated from model service time "
+            "using different weights for edge and cloud execution. "
+            "It does not represent a monetary cost."
+        ),
     )
 
 with input_col2:
@@ -55,7 +65,24 @@ with input_col2:
         value=0.10,
         step=0.01,
         format="%.2f",
-        help="Maximum allowed classification error.",
+        help=(
+            "Maximum acceptable classification error. For example, an error budget "
+            "of 0.10 allows an expected classification error of up to 10%."
+        ),
+    )
+
+with st.expander("What do cost and error mean?"):
+    st.markdown(
+        """
+        - **Cost Budget (C):** The maximum allowed execution cost. Cost is based on
+          model service time, with different weights for edge and cloud execution.
+          It does not represent a monetary cost. Network and queueing delays are
+          not included in this cost.
+
+        - **Error Budget (E):** The maximum acceptable classification error.
+          For example, an error budget of `0.10` allows configurations with an
+          expected classification error of up to 10%.
+        """
     )
 
 if st.button(
@@ -153,3 +180,16 @@ with st.expander("Show complete offline policy table"):
         use_container_width=True,
         hide_index=True,
     )
+
+
+# Future extension information
+st.divider()
+
+st.subheader("Future Extension")
+
+st.write(
+    "A future version will integrate the service with the backend inference system, "
+    "allowing users to submit inference requests with their cost and error requirements. "
+    "The system will then execute the requests using a suitable configuration that meets "
+    "these requirements while providing low-latency inference."
+)
