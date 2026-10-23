@@ -147,7 +147,7 @@ For guidance on the organization of Tutorials, How-To Guides, Explanation, and R
 
 ### License
 
-License information will be added based on the license used by the ICICLE project.
+This project is licensed under the BSD 3-Clause License. See the [LICENSE](LICENSE) file for details.
 
 ## References
 

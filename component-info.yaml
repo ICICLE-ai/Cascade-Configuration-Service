@@ -16,7 +16,7 @@
 
   targetIcicleRelease: "2026-10"
 
-  licenseUrl: "https://github.com/ICICLE-ai/Cascade-Configuration-Service"
+  licenseUrl: "https://github.com/ICICLE-ai/Cascade-Configuration-Service/blob/main/LICENSE"
 
   publicAccess: true
 
